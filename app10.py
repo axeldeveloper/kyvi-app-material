@@ -1,0 +1,204 @@
+import json
+
+import requests
+
+""" Material classes import """
+from kivy.config import Config
+from kivy.core.window import Window
+from kivy.lang import Builder
+from kivy.uix.screenmanager import Screen, ScreenManager
+from kivymd.app import MDApp
+from kivymd.icon_definitions import md_icons
+from kivymd.uix.button import BaseButton, MDFlatButton, MDRaisedButton
+from kivymd.uix.dialog import MDDialog
+from kivymd.uix.list import OneLineListItem
+
+import Alert as msg
+from controller import controller
+from screen_kv import screen_helper
+
+# from kivy.metrics import dp
+# from kivy.uix.behaviors import TouchRippleBehavior
+# from kivy.uix.boxlayout import BoxLayout
+# from kivy.factory import Factory
+# from kivymd.color_definitions import colors
+# from kivymd.uix.button import MDRectangleFlatButton
+# from kivymd.uix.label import MDLabel
+# from kivymd.uix.screen import MDScreen
+# from kivymd.uix.tab import MDTabsBase
+
+""" Screens classes import """
+# Config.set('graphics', 'fullscreen', 'fake')
+# Config.set('graphics', 'position', 'custom')
+# Config.set('graphics', 'top', '300')
+# Config.set('graphics', 'left', '300')
+
+
+class MenuScreem(Screen):
+    pass
+
+
+class LoginScreen(Screen):
+    # def build(self):
+    # pass
+
+    def login_button_action(self):
+        url = 'https://reqres.in/api/login'
+
+        # data = json.dumps({"email": "eve.holt@reqres.in","password": "cityslicka"})
+        header = {'Content-Type': 'application/json'}
+        payload = json.dumps({"email": self.ids.loginnamevalue.text,
+                              "password": self.ids.loginpasswordvalue.text})
+
+        response = requests.post(url, data=payload, headers=header)
+
+        userdata = json.loads(response.text)
+        print(userdata.get("token"))
+
+        msg.Alert(title='oops!', text=self.ids.usernamevalue.text)
+
+        if userdata.get("token"):
+            self.parent.current = 'task'
+            # self.manager.current = 'task'
+            # self.ids.main_screen_manager.manager.current = 'task'
+        else:
+            print(self.parent)
+            self.parent.current = 'failed'
+            # self.manager.current = 'failed'
+            # self.ids.main_screen_manager.manager.current = 'failed'
+            # self.root.current
+
+
+class UserScreem(Screen):
+    dialog = None
+
+    def user_button_action(self):
+        name = self.ids.usernamevalue.text
+        email = self.ids.useremailvalue.text
+        password = self.ids.userpasswordvalue.text
+
+        print(f"Nome: {name}. email : {email} - pws : {password} ")
+
+        ret = controller.add_user({
+            'name': name,
+            'email': email,
+            'password': password,
+        })
+
+        print(type(ret))
+        if ret:
+            # self.parent.current = 'failed'
+            self.show_alert_dialog()
+
+    def create_alert_dialog(self, title, text, action):
+        if not self.dialog:
+            self.dialog = MDDialog(
+                title=title,
+                text=text,
+                auto_dismiss=False,
+                type='custom',
+                size_hint_x=0.8,
+                size_hint_y=1,
+                pos_hint={'center_x': .5, 'center_y': .5},
+                radius=[10, 10, 10, 10],
+                buttons=[
+                    # MDFlatButton(text="CANCEL", on_press=self.redirecionar),
+                    MDRaisedButton(text="OK",  on_release=action)
+                ],
+            )
+        self.dialog.set_normal_height()
+        return self.dialog
+
+    def show_alert_dialog(self):
+        POP = self.create_alert_dialog(
+            "INFORMAÇÃO", "Registro gravado com sucesso.", self.closeDialog)
+        POP.open()
+
+    def show_alert_dialog2(self):
+        if not self.dialog:
+            self.dialog = MDDialog(
+                type='custom',
+                # title_color=(1, 1, 1, 1),
+                auto_dismiss=False,
+                title="informação",
+                text="Registro gravado com sucesso.",
+                buttons=[
+                    # MDFlatButton(text="CANCEL", on_press=self.redirecionar),
+                    MDRaisedButton(text="OK",  on_release=self.closeDialog)
+                ],
+            )
+        self.dialog.set_normal_height()
+        # self.dialog.bind(on_dismiss=self.dismiss_dialog)
+        self.dialog.open()
+
+    def closeDialog(self, inst):
+        self.dialog.dismiss()
+        self.parent.current = 'menu'
+
+
+class FailedLoginScreen(Screen):
+    pass
+
+
+class TaskScreen(Screen):
+    def on_enter(self):
+        # pass
+        self.categories = controller.get_categories()
+        for cat in self.categories:
+            # self.ids.categories.values.append(cat.name)
+            self.ids.tasklist.add_widget(
+                OneLineListItem(text=f"Filler task {cat.name}"))
+
+        # for i in range(20):
+        #    self.ids.tasklist.add_widget(OneLineListItem(text=f"Filler task {i}"))
+
+
+class WindowManager(ScreenManager):
+    pass
+
+
+# sm = ScreenManager()
+# sm = WindowManager()
+# sm.add_widget(MenuScreem(name='menu'))
+# sm.add_widget(LoginScreen(name='login'))
+# sm.add_widget(TaskScreen(name='task'))
+# sm.add_widget(FailedLoginScreen(name='failedlogin'))
+# Window.borderless = False
+
+
+class MainApp(MDApp):
+    def __init__(self, **kwargs):
+
+        self.title = "KivyMD Examples - Login"
+        Window.size = (400, 400)
+        self.theme_cls.primary_palette = "BlueGray"
+        # self.theme_cls.primary_palette = "Purple"
+        # self.theme_cls.theme_style = "Dark"   # <-----------------
+        # self.theme_cls.bg_dark
+        # self.theme_cls.primary_palette = "Green"  # "Purple", "Red"
+        # self.theme_cls.primary_hue = "200"  # "500"
+        super().__init__(**kwargs)
+        # self.screen = Screen()
+        # self.screen =
+        # Builder.load_string(KV)
+
+    def build(self):
+        screen = Builder.load_string(screen_helper)
+        # screen = ScreenManager()
+        # screen = Screen()
+        # screen.add_widget(LoginScreen(name='login'))
+        # main_app_screen.add_widget(FailedLoginScreen(name='failedlogin'))
+        # main_app_screen.add_widget(TaskScreen(name='tasklist'))
+        # Builder.load_string(KV)
+        # return Builder.load_file("app10.kv")
+        # screen.ids.main_layout.add_widget(MDLabel(text="Ola", halign="center", theme_text_color="Primary"))
+        return screen
+
+        # return screen
+
+    def btnCentro(self, p):
+        msg.Alert(title='oops!', text=p)
+
+
+if __name__ == '__main__':
+    MainApp().run()

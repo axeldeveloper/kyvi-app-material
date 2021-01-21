@@ -1,0 +1,13 @@
+*.pyc
+__pycache__
+view/__pycache__
+model/__pycache__
+controller/__pycache__
+share/
+pip-selfcheck.json
+bin
+include
+lib
+.vscode
+pylintrc
+
