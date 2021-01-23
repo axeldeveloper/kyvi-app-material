@@ -1,7 +1,7 @@
 [app]
 
 # (str) Title of your application
-title = My Kivy app
+title = My Kivy app4
 
 # (str) Package name
 package.name = myapp
@@ -32,18 +32,24 @@ version = 0.1
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
+#version.filename = %(source.dir)s/../../kivymd/__init__.py
 # version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements
-# comma separated e.g. requirements = sqlite3,kivy
-requirements = python3, kivy, android, sqlite3
+# comma separated e.g. requirements = sqlite3, kivy
+# requirements = python3, kivy, android, sqlite3, sqlalchemy
+#requirements = python3,android,sqlite3,requests,certifi,urllib3,chardet,idna,Pygments,sqlalchemy, kivy==master,git+https://gitlab.com/kivymd/KivyMD.git
+#requirements = python3,kivy==master,git+https://gitlab.com/kivymd/KivyMD.git
+#requirements = python3,kivy==2.0.0,android,sqlite3,requests,kivymd,certifi,urllib3,chardet,idna,isort,pygments,sqlalchemy,pygame,sh,pyparsing,pytz
+requirements = python3,android, kivy==2.0.0, kivymd==0.104.1,sqlite3, kivy-garden
+
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
 
 # (list) Garden requirements
-#garden_requirements =
+garden_requirements = mapview
 
 # (str) Presplash of the application
 #presplash.filename = %(source.dir)s/data/presplash.png
@@ -52,7 +58,7 @@ requirements = python3, kivy, android, sqlite3
 #icon.filename = %(source.dir)s/data/icon.png
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
-orientation = portrait
+orientation = all
 
 # (list) List of service to declare
 #services = NAME:ENTRYPOINT_TO_PY,NAME2:ENTRYPOINT2_TO_PY
@@ -86,9 +92,11 @@ fullscreen = 0
 
 # (list) Permissions
 #android.permissions = INTERNET
+android.permissions = INTERNET, ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION
 
 # (int) Target Android API, should be as high as possible.
 android.api = 28
+#android.api = 27
 
 # (int) Minimum API your APK will support.
 android.minapi = 21
@@ -99,6 +107,7 @@ android.sdk = 28
 
 # (str) Android NDK version to use
 #android.ndk = 19b
+#android.ndk = 17c
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
 #android.ndk_api = 21
@@ -214,7 +223,7 @@ android.sdk = 28
 #android.uses_library =
 
 # (str) Android logcat filters to use
-#android.logcat_filters = *:S python:D
+android.logcat_filters = *:S python:D
 
 # (bool) Copy library instead of making a libpymodules.so
 #android.copy_libs = 1

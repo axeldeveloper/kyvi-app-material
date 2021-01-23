@@ -1,0 +1,3 @@
+title=My app kivy5
+author=axel
+orientation=portrait

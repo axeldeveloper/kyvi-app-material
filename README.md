@@ -35,3 +35,21 @@ Este projeto tem como objetivo reunir o mínimo de código necessário para inic
 ## Modelo e banco de dados
 
 A persistência de dados utiliza o framework SQLAlchemy, que facilita lidar com queries do Python, e o sistema de banco de dados SQLite, que pode ser facilmente embalado e transportado com um aplicativo destktop o móvel.
+
+
+source ../kivy_venv/bin/activate
+
+# docker 
+
+docker run --volume "$HOME/.buildozer":/home/user/.buildozer   --volume "$PWD":/home/user/hostcwd kivy/buildozer android debug
+
+
+docker run --volume "$HOME/.buildozer":/home/user/.buildozer   --volume "$PWD":/home/user/hostcwd kivy/buildozer android clean
+
+
+docker run --volume "$(pwd)":/home/user/hostcwd buildozer --version
+
+
+adb -s 0058823888 install ./bin/myapp-0.1-armeabi-v7a-debug.apk
+
+adb devices
