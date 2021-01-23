@@ -41,7 +41,7 @@ version = 0.1
 #requirements = python3,android,sqlite3,requests,certifi,urllib3,chardet,idna,Pygments,sqlalchemy, kivy==master,git+https://gitlab.com/kivymd/KivyMD.git
 #requirements = python3,kivy==master,git+https://gitlab.com/kivymd/KivyMD.git
 #requirements = python3,kivy==2.0.0,android,sqlite3,requests,kivymd,certifi,urllib3,chardet,idna,isort,pygments,sqlalchemy,pygame,sh,pyparsing,pytz
-requirements = python3,android, kivy==2.0.0, kivymd==0.104.1,sqlite3, kivy-garden
+requirements = python3,android,kivy==2.0.0, kivymd==0.104.1,sqlite3, kivy-garden
 
 
 # (str) Custom source folders for requirements
