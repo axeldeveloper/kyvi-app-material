@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = My Kivy app4
+title = My Kivy app5
 
 # (str) Package name
-package.name = myapp
+package.name = kmyapp
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
@@ -13,7 +13,7 @@ package.domain = org.test
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas
+source.include_exts = py,png,jpg,kv,atlas,ttf,db,txt
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = assets/*,images/*.png
@@ -39,9 +39,10 @@ version = 0.1
 # comma separated e.g. requirements = sqlite3, kivy
 # requirements = python3, kivy, android, sqlite3, sqlalchemy
 #requirements = python3,android,sqlite3,requests,certifi,urllib3,chardet,idna,Pygments,sqlalchemy, kivy==master,git+https://gitlab.com/kivymd/KivyMD.git
-#requirements = python3,kivy==master,git+https://gitlab.com/kivymd/KivyMD.git
+# requirements = python3,kivy==master,git+https://gitlab.com/kivymd/KivyMD.git
+requirements = kivy==2.0.0, kivymd==0.104.1
 #requirements = python3,kivy==2.0.0,android,sqlite3,requests,kivymd,certifi,urllib3,chardet,idna,isort,pygments,sqlalchemy,pygame,sh,pyparsing,pytz
-requirements = python3,android,kivy==2.0.0, kivymd==0.104.1,sqlite3, kivy-garden
+# requirements = python3,android,kivy==2.0.0, kivymd==0.104.1,sqlite3, certifi, kivy-garden
 
 
 # (str) Custom source folders for requirements
@@ -49,7 +50,7 @@ requirements = python3,android,kivy==2.0.0, kivymd==0.104.1,sqlite3, kivy-garden
 # requirements.source.kivy = ../../kivy
 
 # (list) Garden requirements
-garden_requirements = mapview
+# garden_requirements = mapview
 
 # (str) Presplash of the application
 #presplash.filename = %(source.dir)s/data/presplash.png
@@ -71,8 +72,8 @@ orientation = all
 # author = © Copyright Info
 
 # change the major version of python used by the app
-# osx.python_version = 3
-osx.python_version = 3.7.3
+osx.python_version = 3
+# osx.python_version = 3.7.3
 # Kivy version to use
 osx.kivy_version = 1.9.1
 
@@ -95,22 +96,22 @@ fullscreen = 0
 android.permissions = INTERNET, ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION
 
 # (int) Target Android API, should be as high as possible.
-android.api = 28
-#android.api = 27
+# android.api = 28
+android.api = 27
 
 # (int) Minimum API your APK will support.
 android.minapi = 21
 
 # (int) Android SDK version to use
-#android.sdk = 20
-android.sdk = 28
+android.sdk = 20
+# android.sdk = 28
 
 # (str) Android NDK version to use
-#android.ndk = 19b
+android.ndk = 19b
 #android.ndk = 17c
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
-#android.ndk_api = 21
+android.ndk_api = 21
 
 # (bool) Use --private data storage (True) or --dir public storage (False)
 #android.private_storage = True

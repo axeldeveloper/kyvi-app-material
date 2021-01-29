@@ -1,22 +1,23 @@
-from kivy.lang import Builder
 from kivymd.app import MDApp
+from kivy.lang import Builder
+from kivy.uix.screenmanager import Screen
 
-root_kv = """
-BoxLayout:
-    MDRaisedButton:
-        text: "Click me!"
-        on_release: print("Hi!")
-"""
+class DashBoard(Screen):
+    pass
 
+class FirstScreen(Screen):
+    pass
 
-class MainApp(MDApp):
-    def __init__(self, **kwargs):
-        self.title = "My Material Application"
-        super().__init__(**kwargs)
-
+class Lavanderia(MDApp):
     def build(self):
-        self.root = Builder.load_string(root_kv)
+        self.title="Texto Titulo"
+        self.theme_cls.primary_palette = "LightBlue"
+        return Builder.load_file("main.kv")
 
+    def proximo(self):
+        self.root.ids.carousel.load_next(mode="proximo")# Próximo Card
+    
+    def fecharApp(self):
+        self.stop()# Fecha Aplicativo
 
-if __name__ == "__main__":
-    MainApp().run()
+Lavanderia().run()

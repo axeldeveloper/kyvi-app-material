@@ -1,10 +1,16 @@
-# Boilerplate for Kivy CRUD
+# Kivy CRUD
 
-This project is intended to put together minimal code necessary to start a Kivy application with CRUD. The MVC approach is used.
+This project is intended to put together minimal code necessary to start a Kivy application with CRUD.
 
 ## Model and Database
 
 Persistence uses the SQLAlchemy framework, which makes it easy to handle database queries from Python, and the SQLite database system, which can easily be packed and shipped with a desktop or mobile application.
+
+## View using KivyMD
+    using in front
+
+
+
 
 ## Install requirements in a virtual environment
 
@@ -25,19 +31,19 @@ Then, assuming you have installed Pip, you may use it to install SQLAlchemy:
 `pip install sqlalchemy`
 
 
-https://samridhiagarwalblog.wordpress.com/2020/08/30/getting-started-with-mobile-application-development-using-python-and-kivy/
+`pip freeze > requirements.txt`
 
 
-# Boilerplate para CRUD com Kivy
+# CRUD com Kivy
 
-Este projeto tem como objetivo reunir o mínimo de código necessário para iniciar um aplicativo com CRUD. É usada a abordagem MVC.
+Este projeto tem como objetivo reunir o mínimo de código necessário para iniciar um aplicativo com CRUD. 
 
 ## Modelo e banco de dados
 
 A persistência de dados utiliza o framework SQLAlchemy, que facilita lidar com queries do Python, e o sistema de banco de dados SQLite, que pode ser facilmente embalado e transportado com um aplicativo destktop o móvel.
 
 
-source ../kivy_venv/bin/activate
+
 
 # docker 
 
@@ -53,3 +59,9 @@ docker run --volume "$(pwd)":/home/user/hostcwd buildozer --version
 adb -s 0058823888 install ./bin/myapp-0.1-armeabi-v7a-debug.apk
 
 adb devices
+
+
+# python env
+virtualenv -p /usr/bin/python3.7 kivymd_env
+
+source ../kivymd_env/bin/activate
