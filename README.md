@@ -62,6 +62,21 @@ adb devices
 
 
 # python env
-virtualenv -p /usr/bin/python3.7 kivymd_env
+linux
+    virtualenv -p /usr/bin/python3.7 kivymd_env
 
-source ../kivymd_env/bin/activate
+    source ../kivymd_env/bin/activate
+
+windows
+    c:\>python -m venv c:\path\to\myenv
+    c:\>c:\Python35\python -m venv c:\path\to\myenv
+    python3 -m venv /path/to/new/virtual/environment
+    C:/Dev/kivy_venv/Scripts/Activate.ps1
+
+https://github.com/ntaraujo/kivy-easier    
+
+https://github.com/HeaTTheatR/CreatorKivyProject
+
+
+
+https://stackoverflow.com/questions/46589056/how-to-use-sqlalchemy-with-buildozer

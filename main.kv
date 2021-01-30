@@ -1,9 +1,12 @@
 #:import rgba kivy.utils.get_color_from_hex
+#:import Snackbar kivymd.uix.snackbar.Snackbar
 
 NavigationLayout:
     id: nav_layout
     ScreenManager:
+        id: main_screen_manager
         Screen:
+            id: main_screen_content
             BoxLayout:
                 orientation:'vertical'
                 MDToolbar:
@@ -11,13 +14,33 @@ NavigationLayout:
                     elevation:10
                     left_action_items:[["menu", lambda x: nav_drawer.set_state()]]
                 ScreenManager:
-                    id: screen_manager
+                    id: screen_manager                   
+                    PincipalScreen:
+                        id:principal
+                        name:"principal"
                     DashBoard:
                         id:dashboard
                         name:"dashboard"
-                    FirstScreen:
-                        id:first_screen
-                        name:"first_screen"
+                    CategoriaScreem:
+                        id:categoria_screen
+                        name:"categoria_screen"
+                    Registration:
+                        id:registration
+                        name:"registration"                   
+                    #LoginForm:
+                    #    id:loginform
+                    #    name:"loginform"
+                   
+                    LoginScreen:
+                        id:login
+                        name:"login"                
+                    #FormSnack:
+                    #    id:formsnack
+                    #    name: "formsnack"
+                    #PanelImage:
+                    #    id:panelimage
+                    #    name: "panelimage"
+                   
     MDNavigationDrawer:
         id: nav_drawer
         BoxLayout:
@@ -32,50 +55,68 @@ NavigationLayout:
             ScrollView:
                 MDList:
                     OneLineIconListItem:
-                        text:"Tela 1"
+                        text:"Home"
+                        on_release:
+                            screen_manager.current = "principal"
+                            nav_drawer.set_state()
+                        IconLeftWidget:
+                            icon:"dishwasher"                        
+                    OneLineIconListItem:
+                        text:"Dashboard"
                         on_release:
                             screen_manager.current = "dashboard"
                             nav_drawer.set_state()
                         IconLeftWidget:
                             icon:"dishwasher"
                     OneLineIconListItem:
-                        text:"Tela 2"
+                        text:"Categoria"
                         on_release:
-                            screen_manager.current = "first_screen"
+                            screen_manager.current = "categoria_screen"
+                            nav_drawer.set_state()
+                        IconLeftWidget:
+                            icon:"dishwasher"                
+                    OneLineIconListItem:
+                        text:"Registration"
+                        on_release:
+                            screen_manager.current = "registration"
                             nav_drawer.set_state()
                         IconLeftWidget:
                             icon:"dishwasher"
 
+                    OneLineIconListItem:
+                        text:"Login Form"
+                        on_release:
+                            screen_manager.current = "loginform"
+                            nav_drawer.set_state()
+                        IconLeftWidget:
+                            icon:"dishwasher"
 
+                    
+                    OneLineIconListItem:
+                        text:"Login"
+                        on_release:
+                            screen_manager.current = "login"
+                            nav_drawer.set_state()
+                        IconLeftWidget:
+                            icon:"dishwasher" 
+                    
+                    OneLineIconListItem:
+                        text:"FormSnack"
+                        on_release:
+                            screen_manager.current = "formsnack"
+                            nav_drawer.set_state()
+                        IconLeftWidget:
+                            icon:"dishwasher"
+                    OneLineIconListItem:
+                        text:"PanelImage"
+                        on_release:
+                            screen_manager.current = "panelimage"
+                            nav_drawer.set_state()
+                        IconLeftWidget:
+                            icon:"dishwasher"
+#:include dashboard.kv
+#:include principal_screem.kv
+#:include form_categoria_screem.kv
+#:include form_Registration.kv
+#:include form_login_screem.kv
 
-<DashBoard>:
-    MDFloatLayout:
-        MDCard:
-            size_hint: dp(.45), dp(.8)
-            pos_hint:{"center_x": .5, "center_y": .5}
-            Carousel:
-                id:carousel
-                MDFloatLayout:
-                    MDTextField:
-                        hint_text:"Texto 1"
-                        size_hint_x:dp(.8)
-                        pos_hint:{"center_x": .5, "center_y": .48}
-                    MDRaisedButton:
-                        text: "Proximo"
-                        size_hint_x:dp(.8)
-                        pos_hint:{"center_x":.5,"center_y":.2}
-                        on_release: app.proximo() # Proximo step
-                MDFloatLayout:
-                    MDLabel:
-                        text:"Texto Final Conclusão"
-                        theme_text_color:"Custom"
-                        bold:True
-                        pos_hint:{"center_x":.68,"center_y":.5}
-                        font_style:"H5"
-                    MDRaisedButton:
-                        text: "Fechar Aplicativo"
-                        text_color:rgba("#00FF69")
-                        size_hint_x:dp(.8)
-                        pos_hint:{"center_x":.5,"center_y":.4}
-                        md_bg_color:rgba("#333333")
-                        on_release: app.fecharApp() #fechar Aplicativo

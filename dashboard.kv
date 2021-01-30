@@ -1,0 +1,44 @@
+<DashBoard>:
+    orientation: "vertical"
+    # size_hint: 0.1, 1
+    background_color:
+    canvas.before:
+        Color:
+            # rgba: self.background_color
+            rgba: app.theme_cls.primary_color
+        Rectangle:
+        #RoundedRectangle:
+            # radius: [10]
+            pos: self.pos
+            size: self.size
+    MDFloatLayout:
+        MDCard:
+            #size_hint: dp(.45), dp(.8)   
+            size_hint: None, None
+            size: "580dp", "280dp"
+            pos_hint: {"center_x": .5, "center_y": .5}
+            Carousel:
+                id:carousel
+                MDFloatLayout:
+                    MDTextField:
+                        hint_text:"Pontos do time"
+                        size_hint_x:dp(.10)
+                        pos_hint:{"center_x": .5, "center_y": .48}
+                    MDRaisedButton:
+                        text: "Proximo"
+                        size_hint_x:dp(.8)
+                        pos_hint:{"center_x":.5,"center_y":.2}
+                        on_release: app.proximo() # Proximo step
+                MDFloatLayout:
+                    MDLabel:
+                        text:"Texto Final Conclusão"
+                        theme_text_color:"Custom"
+                        bold:True
+                        pos_hint:{"center_x":.68,"center_y":.5}
+                    MDRaisedButton:
+                        text: "Fechar Aplicativo"
+                        text_color:rgba("#00FF69")
+                        size_hint_x:dp(.8)
+                        pos_hint:{"center_x":.5,"center_y":.4}
+                        md_bg_color:rgba("#333333")
+                        on_release: app.fecharApp() #fechar Aplicativo

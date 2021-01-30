@@ -1,0 +1,46 @@
+#:import rgba kivy.utils.get_color_from_hex
+#:import Snackbar kivymd.uix.snackbar.Snackbar
+
+<FormValidator>:
+    #name: 'system_parameters'
+    BoxLayout:
+        orientation: "horizontal"
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+            padding: dp(48)
+            spacing: 10
+            MDTextField:
+                hint_text: "No helper text"
+                input_filter: "float"
+            MDTextField:
+                hint_text: "Helper text on focus"
+                helper_text: "This will disappear when you click off"
+                helper_text_mode: "on_focus"
+                input_filter: "int"
+            MDTextField:
+                hint_text: "No helper text"
+            MDTextField:
+                hint_text: "Helper text on focus"
+                helper_text: "This will disappear when you click off"
+                helper_text_mode: "on_focus"
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+            padding: dp(48)
+            spacing: 10
+            MDTextField:
+                hint_text: "No helper text"
+            MDTextField:
+                hint_text: "Helper text on focus"
+                helper_text: "This will disappear when you click off"
+                helper_text_mode: "on_focus"
+            MDTextField:
+                hint_text: "No helper text"
+            MDTextField:
+                hint_text: "Helper text on focus"
+                helper_text: "This will disappear when you click off"
+                helper_text_mode: "on_focus"
+

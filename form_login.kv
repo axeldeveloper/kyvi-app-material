@@ -1,0 +1,70 @@
+#:import rgba kivy.utils.get_color_from_hex
+#:import Snackbar kivymd.uix.snackbar.Snackbar
+
+<LoginForm>
+    id: display_screen
+    #on_pre_enter: display_scroll.scroll_y = 1
+    #on_pre_leave:
+        #self.update_rating(app.rating_display, app.recipe_id)
+    #on_leave:
+    #    self.ids.rating_box.clear_widgets()
+    #    self.ids.table_data.clear_widgets()
+        #app.update_tile_menu()
+    AnchorLayout:
+        size_hint: None, None
+        width: root.width
+        height: root.height  # - toolbar.height
+        x: root.x
+        y: 0  
+        ScrollView:
+            id: display_scroll
+            do_scroll_x: False
+            do_scroll_y: True
+            bar_width: 8
+            bar_color: app.theme_cls.accent_color
+            bar_inactive_color: [.7, .7, .7, .4]
+            scroll_type: ['bars', 'content']
+           
+            BoxLayout:
+                id: scrollbox
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                Widget:
+                    size_hint_y: None
+                    height: 20
+                Label:
+                    text: "to rindo atua"
+        
+                BoxLayout:
+                    id: title_info
+                    size_hint: None, None
+                    width: root.width
+                    height: self.minimum_height
+                    padding: 8
+                    spacing: 10
+                    orientation: 'vertical'
+                    MDSeparator:
+
+     
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint: (1, None)
+                        height: 10
+                                     
+                                       
+                    MDTextField:
+                        id: username
+                        hint_text: "Username "
+                        helper_text_mode: "on_focus"
+
+                    MDTextField:
+                        id: password
+                        hint_text: "Password "
+                        helper_text_mode: "on_focus"
+                        password: True                 
+                    MDRoundFlatIconButton:
+                        text: "I love Python"
+                        icon: "language-python"
+                    MDFillRoundFlatButton:
+                        text: "I love Python"

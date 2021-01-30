@@ -1,0 +1,64 @@
+<PincipalScreen>:
+    id:principal
+    name:"principal"
+    # size: (100,100)
+    # orientation: "vertical"
+    background_color:
+    canvas.before:
+        Color:
+            rgba: self.background_color
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    MDFloatLayout:
+        MDCard:
+            size_hint: dp(.45), dp(.8)
+            pos_hint:{"center_x": .5, "center_y": .5}
+            MDFloatLayout:
+                MDLabel:
+                    text:"Texto Final Conclusão"
+                    theme_text_color:"Custom"
+                    bold:True
+                    pos_hint:{"center_x":.68,"center_y":.5}
+                MDRaisedButton:
+                    text: "Fechar Aplicativo"
+                    text_color:rgba("#00FF69")
+                    size_hint_x:dp(.8)
+                    pos_hint:{"center_x":.5,"center_y":.4}
+                    md_bg_color:rgba("#333333")
+                    on_release: app.fecharApp() #fechar Aplicativo
+
+<PincipalScreen2>:
+    BoxLayout:
+        spacing: 20
+        padding: 20
+        orientation: 'vertical'
+        Widget:
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 10
+            spacing: 10
+            MDTextField:
+                id: username
+                hint_text: "Please enter your unique username"
+            MDCard:
+                size_hint_x: 1
+                BoxLayout:
+                    padding: 10
+                    spacing: 10
+                    orientation: 'vertical'
+                    MDLabel:
+                        text: 'Please don share this username'
+                        theme_text_color: 'Secondary'
+                        font_style: "H2"
+                        size_hint_y: None
+                        height: dp(36)
+                    MDSeparator:
+                        height: dp(1)
+                    MDLabel:
+                        text: "This application was developed in a hurry, So I didn't have the time to implement a proper login system. This system is temporary And I will impliment proper logins at later stages of development"
+                        theme_text_color: "Primary"
+            MDRaisedButton:
+                size_hint_x: 1
+                text: "Next ->"
+                on_release: root.on_release_next_button()

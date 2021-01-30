@@ -1,0 +1,83 @@
+#:import rgba kivy.utils.get_color_from_hex
+#:import Snackbar kivymd.uix.snackbar.Snackbar
+
+
+<FormSnack>:
+    BoxLayout:
+        # size_hint: 1, None
+        # padding: "10dp"
+        orientation:'vertical'
+        size_hint_y: None
+        height: self.minimum_height
+        #padding: dp(88)
+        padding: 80
+        spacing:10
+
+        # size_hint_y: None
+        # height: self.minimum_height
+
+        canvas:
+            Color:
+                rgba: app.theme_cls.primary_color
+                # rgba: rgba('#FFFFFF')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        MDLabel:
+            text: 'Formulario de Cadastro'
+            theme_text_color: 'Secondary'
+            font_style:"Subtitle1"
+            size_hint_y: None
+            # height: dp(36)
+        MDSeparator:
+            height: dp(1)
+
+        MDTextField:
+            id: car_nome_text
+            required: True
+            hint_text: "Carro"
+            helper_text_mode: "on_error"
+            helper_text: "Enter car name"
+
+        MDTextField:
+            id: car_rena_text
+            required: True
+            hint_text: "Renavam"
+            helper_text_mode: "on_focus"
+            helper_text: "Enter renavam number"
+
+        MDTextField:
+            id: car_ano_text
+            required: True
+            hint_text: "Ano"
+            helper_text_mode: "on_focus"
+            helper_text: "Enter ano number"
+
+        MDTextField:
+            id: car_nome_placa
+            required: True
+            hint_text: "Placa"
+            helper_text_mode: "on_focus"
+            helper_text: "Enter placa number"   
+
+        MDSeparator:
+            height: dp(1)
+        
+        #MDFloatingActionButton:
+        #    id: button
+        #    x: root.width - self.width - dp(10)
+        #    y: dp(10)
+        #    on_release: root.snackbar_show()
+        
+        MDRaisedButton:
+            text: "Create"
+            on_release: Snackbar(text="This is a snackbar!").show()
+            # pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDFillRoundFlatButton:
+            color: 0, 0, 0, 1
+            bold: True
+            font_size: '30sp'
+            #font_name: 'fonts/THSarabunNew.ttf'
+            text: 'ola'

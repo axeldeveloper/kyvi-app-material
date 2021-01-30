@@ -40,6 +40,7 @@ def add_item(data):
 def add_category(data):
     category = Category()
     category.name = data['name']
+    category.sub_name = data['sub_name']
     session.add(category)
     session.commit()
     session.close()

@@ -40,7 +40,7 @@ version = 0.1
 # requirements = python3, kivy, android, sqlite3, sqlalchemy
 #requirements = python3,android,sqlite3,requests,certifi,urllib3,chardet,idna,Pygments,sqlalchemy, kivy==master,git+https://gitlab.com/kivymd/KivyMD.git
 # requirements = python3,kivy==master,git+https://gitlab.com/kivymd/KivyMD.git
-requirements = kivy==2.0.0, kivymd==0.104.1
+requirements = python3,android,kivy==2.0.0, kivymd==0.104.1
 #requirements = python3,kivy==2.0.0,android,sqlite3,requests,kivymd,certifi,urllib3,chardet,idna,isort,pygments,sqlalchemy,pygame,sh,pyparsing,pytz
 # requirements = python3,android,kivy==2.0.0, kivymd==0.104.1,sqlite3, certifi, kivy-garden
 
@@ -135,6 +135,7 @@ android.ndk_api = 21
 # the default, you will be shown the license when first running
 # buildozer.
 # android.accept_sdk_license = False
+android.accept_sdk_license = True
 
 # (str) Android entry point, default is ok for Kivy-based app
 #android.entrypoint = org.renpy.android.PythonActivity

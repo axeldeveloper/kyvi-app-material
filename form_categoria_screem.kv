@@ -1,0 +1,46 @@
+<CategoriaScreem>:
+    #    id:categoria_screen
+    #    name:"categoria_screen" 
+    # size: (100,100)
+    # orientation: "vertical"
+    background_color:
+    canvas.before:
+        Color:
+            # rgba: self.background_color
+            rgba: app.theme_cls.primary_color
+        Rectangle:
+            pos: self.pos
+            size: self.size    
+    MDCard:
+        size_hint: None, None
+        size: dp(600), dp(350)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        BoxLayout:
+            orientation:'vertical'
+            padding: dp(20)
+            spacing:20
+            MDLabel:
+                text: 'CADASTRAR CATEGORIAS'
+                theme_text_color: 'Secondary'
+                size_hint_y: None
+                height: dp(36)
+            MDSeparator:
+                height: dp(1)
+            MDTextField:
+                id: txt_cat_name
+                hint_text: "Nome"
+                helper_text_mode: "on_focus"
+            MDTextField:
+                id: txt_cat_sub_name
+                hint_text: "Categoria "
+                helper_text_mode: "on_focus"
+            MDSeparator:
+                height: dp(2)
+            MDFlatButton:
+                text: "Gravar"
+                pos_hint: {'center_x': 0.5}    
+                text_color:rgba("#00FF69")
+                size_hint_x:dp(.8)
+                pos_hint:{"center_x":.5,"center_y":.4}
+                md_bg_color:rgba("#333333")
+                on_release: root.inserir_categoria()
